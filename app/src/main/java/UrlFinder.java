@@ -57,9 +57,9 @@ public class UrlFinder {
         return elements.get(randomLink).attr("abs:href");
     }
 
-    public boolean isConnectedToInternet(){
+    public boolean isConnectedToInternet() {
         final ConnectivityManager conMgr = (ConnectivityManager) m_context.getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
-        return (activeNetwork != null && activeNetwork.isConnected())  ? true : false;
+        return (activeNetwork != null && activeNetwork.isConnected());
     }
 }
