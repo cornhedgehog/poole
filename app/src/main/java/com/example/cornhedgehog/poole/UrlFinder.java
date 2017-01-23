@@ -25,7 +25,7 @@ public class UrlFinder {
     }
 
     //получить список url на странице
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+   // @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public String getUrl(String urlString) throws Exception {
         URL url = new URL(urlString);
         String returnedValue = urlString;

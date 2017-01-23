@@ -23,13 +23,23 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
-    public void onSearchButtonClicked(View view) {
+    public void onSearchButtonClicked(View view) throws Exception {
         final EditText urlField = (EditText) findViewById(R.id.urlText);
         Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-      //  UrlFinder = new UrlFinder(this.getApplicationContext());
-        intent.putExtra("Url", urlField.getText().toString());
+        UrlFinder url = new UrlFinder(this.getApplicationContext());
+        String urlFromEditText = urlField.getText().toString();
+        if (!urlFromEditText.contains("www")) {
+            String www = "www.";
+            urlFromEditText = www.concat(urlFromEditText);
+        }
+        if (!urlFromEditText.contains("http://")) {
+            String http = "http://";
+            urlFromEditText = http.concat(urlFromEditText);
+        }
+        intent.putExtra("Url", url.getUrl(urlFromEditText));
         startActivity(intent);
     }
+    //TODO manage the exception
 
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
