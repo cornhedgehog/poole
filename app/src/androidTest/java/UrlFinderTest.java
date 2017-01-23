@@ -1,5 +1,7 @@
 import android.content.Context;
 
+import com.example.cornhedgehog.poole.UrlFinder;
+
 import org.junit.Test;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;

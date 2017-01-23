@@ -33,7 +33,7 @@
             android:text="Generate new piss of knowledge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/newPageButton"
+            android:id="@+id/newSearchBtn"
             style="@android:style/Widget.Material.Button"
             android:layout_below="@+id/linearLayout"
             android:layout_centerHorizontal="true" />

@@ -27,7 +27,7 @@ public class WebViewActivity extends AppCompatActivity {
             }
         });
 
-        //UrlFinder urlFinder = new UrlFinder(this.getApplicationContext());
+        //com.example.cornhedgehog.poole.UrlFinder urlFinder = new com.example.cornhedgehog.poole.UrlFinder(this.getApplicationContext());
         //String finalUrl =
 
         wv.loadUrl("http://" + getIntent().getExtras().getString("Url"));

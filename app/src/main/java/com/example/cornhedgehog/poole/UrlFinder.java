@@ -1,3 +1,5 @@
+package com.example.cornhedgehog.poole;
+
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -18,13 +20,13 @@ import java.util.concurrent.ThreadLocalRandom;
 public class UrlFinder {
     Context m_context;
     UrlFinder() {}
-    UrlFinder (Context context) {
+    public UrlFinder(Context context) {
         this.m_context = context;
     }
 
     //получить список url на странице
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    String getUrl(String urlString) throws Exception {
+    public String getUrl(String urlString) throws Exception {
         URL url = new URL(urlString);
         String returnedValue = urlString;
 
