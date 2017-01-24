@@ -38,8 +38,6 @@ public class UrlFinder {
             while (!tt.isEmpty() && randomDepthStep != 0) {
                 int randomLink = ThreadLocalRandom.current().nextInt(0, tt.size());
                 returnedValue = tt.get(randomLink).attr("abs:href");
-
-                //возможно, будет пипец
                 Document nextDoc = Jsoup.connect(goInDepth(tt)).get();
                 tt = nextDoc.select("a[href]");
                 randomDepthStep--;

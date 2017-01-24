@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //final EditText urlField = (EditText) findViewById(R.id.urlText);
+        //urlField.getBackground().setColorFilter();
 //        final Button button = (Button) findViewById(R.id.searchBtn);
 //        button.setOnClickListener(new View.OnClickListener() {
 //            public void onSearchBtnClicked(View v) {
