@@ -14,21 +14,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //final EditText urlField = (EditText) findViewById(R.id.urlText);
-        //urlField.getBackground().setColorFilter();
-//        final Button button = (Button) findViewById(R.id.searchBtn);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            public void onSearchBtnClicked(View v) {
-//                // Perform action on click
-//            }
-//        });
     }
 
     public void onSearchButtonClicked(View view) throws Exception {
         final EditText urlField = (EditText) findViewById(R.id.urlText);
         Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-        UrlFinder url = new UrlFinder(this.getApplicationContext());
         String urlFromEditText = urlField.getText().toString();
         if (!urlFromEditText.contains("www")) {
             String www = "www.";
@@ -38,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             String http = "http://";
             urlFromEditText = http.concat(urlFromEditText);
         }
-        intent.putExtra("Url", url.getUrl(urlFromEditText));
+        intent.putExtra("Url", urlFromEditText);
         startActivity(intent);
     }
     //TODO manage the exception

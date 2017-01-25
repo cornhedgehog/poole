@@ -38,7 +38,6 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="www.habrahabr.ru"
         android:ems="10"
         android:id="@+id/urlText"
         android:textAlignment="center"
@@ -51,6 +50,7 @@
         android:inputType="textNoSuggestions"
         android:cursorVisible="false"
         android:backgroundTint="@color/colorPrimaryDark" />
+    <!--android:text="www.habrahabr.ru"-->
 
     <ImageButton
         android:layout_width="match_parent"

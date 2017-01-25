@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -31,9 +32,11 @@ public class UrlFinder {
         String returnedValue = urlString;
 
         if (isConnectedToInternet()) {
-            Document doc = Jsoup.connect(urlString).get();
+            Connection c = Jsoup.connect(urlString);
+            Document doc = c.get();
             Elements tt = doc.select("a[href]");
 
+            //TODO optimize
             int randomDepthStep = ThreadLocalRandom.current().nextInt(0, 10);
             while (!tt.isEmpty() && randomDepthStep != 0) {
                 int randomLink = ThreadLocalRandom.current().nextInt(0, tt.size());
@@ -42,7 +45,6 @@ public class UrlFinder {
                 tt = nextDoc.select("a[href]");
                 randomDepthStep--;
             }
-
             if (!tt.isEmpty()) {
                 int randomLink = ThreadLocalRandom.current().nextInt(0, tt.size());
                 returnedValue = tt.get(randomLink).attr("abs:href");
