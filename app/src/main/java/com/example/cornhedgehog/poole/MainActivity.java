@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     //TODO manage the exception
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
+        // Handles item selection
         switch (item.getItemId()) {
             case R.id.action_settings:
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);

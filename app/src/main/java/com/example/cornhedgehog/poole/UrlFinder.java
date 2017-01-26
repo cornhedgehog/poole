@@ -1,18 +1,15 @@
 package com.example.cornhedgehog.poole;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import java.net.URL;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 /**
  * Created by cornhedgehog on 1/16/2017.
@@ -25,38 +22,27 @@ public class UrlFinder {
         this.m_context = context;
     }
 
-    //получить список url на странице
-   // @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public String getUrl(String urlString) throws Exception {
-        URL url = new URL(urlString);
-        String returnedValue = urlString;
-
+    //get Url for further browsing
+    public String getUrl(String url) throws Exception {
         if (isConnectedToInternet()) {
-            Connection c = Jsoup.connect(urlString);
+            Connection c = Jsoup.connect(url);
             Document doc = c.get();
             Elements tt = doc.select("a[href]");
 
             //TODO optimize
-            int randomDepthStep = ThreadLocalRandom.current().nextInt(0, 10);
-            while (!tt.isEmpty() && randomDepthStep != 0) {
-                int randomLink = ThreadLocalRandom.current().nextInt(0, tt.size());
-                returnedValue = tt.get(randomLink).attr("abs:href");
-                Document nextDoc = Jsoup.connect(goInDepth(tt)).get();
-                tt = nextDoc.select("a[href]");
-                randomDepthStep--;
+            Random random = new Random(System.nanoTime()*System.currentTimeMillis());
+            int rand = random.nextInt(10);
+            for (int i = 0; i < rand; i++) {
+                int randLimited = random.nextInt(tt.size() - 1);
+                url = tt.get(randLimited).attr("abs:href");
+                if (tt.isEmpty()) break;
             }
             if (!tt.isEmpty()) {
-                int randomLink = ThreadLocalRandom.current().nextInt(0, tt.size());
-                returnedValue = tt.get(randomLink).attr("abs:href");
+                int randomLink =  random.nextInt(tt.size() - 1);
+                url = tt.get(randomLink).attr("abs:href");
             }
         }
-        return returnedValue;
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    String goInDepth(Elements elements) {
-        int randomLink = ThreadLocalRandom.current().nextInt(0, elements.size());
-        return elements.get(randomLink).attr("abs:href");
+        return url;
     }
 
     public boolean isConnectedToInternet() {
